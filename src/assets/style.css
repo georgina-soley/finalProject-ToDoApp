@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;800&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+
+:root {
+    --colorWhite: #ffffff;
+    --colorBlack: #000000;
+    --colorRed: blue;
+    --fontSize-sm: 16px;
+    --fontFamily: 'Poppins', Helvetica, sans-serif;
+    --fontTitle: 'Poppins';
+    --fontBody: 'Poppins';
+}
+
+body{
+    font-family: var(--fontFamily);
+    
+}
+
+/* SignIn Component */
+
+h1 {
+    color: var(--colorRed);
+}
+
+/* SignUp Component */
+
+
+
+/* Home view */
+
+/* Account View */
