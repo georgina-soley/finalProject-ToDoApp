@@ -1,17 +1,16 @@
 <template>
-<div class="container">
-    <h3 v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.title}}</h3>
-    <p v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.description}}</p>
-    <button @click="deleteTask">Delete {{task.title}}</button>
-<button @click="changeBooleanFunction">edit</button>
-<div v-show="changeBoolean">
-    <input type="text" placeholder="Change Title" v-model="name"/>
-    <input type="text" placeholder="Change Description" v-model="description" />
-    <button @click="changeTask">Save changes</button>
-    
-</div>
-<button @click="changeStatus">completed</button>
-</div>
+    <div class="container">
+        <h3 v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.title}}</h3>
+        <p v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.description}}</p>
+        <button @click="deleteTask">Delete {{task.title}}</button>
+        <button @click="changeBooleanFunction">edit</button>
+            <div v-show="changeBoolean">
+                <input type="text" placeholder="Change Title" v-model="name"/>
+                <input type="text" placeholder="Change Description" v-model="description" />
+                <button @click="changeTask">Save changes</button>
+            </div>
+        <button @click="changeStatus">completed</button>
+    </div>
 </template>
 
 <script setup>

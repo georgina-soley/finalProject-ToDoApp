@@ -10,7 +10,51 @@
         <div class="input-field">
             <input type="text" placeholder="Add a Task Description" v-model="description">
         </div>
+        <div class="category input-field">
+            <h4>Pick a category</h4>
+            <div class="options">
+                <label>
+                    <input 
+                    type="radio"
+                    name="category"
+                    value="business"
+                    v-model="category">
+                    <span class="bubble business"></span>
+                    <div>Business</div>
+                
+                </label>
+                <label>
+                    <input 
+                    type="radio"
+                    name="category"
+                    value="work"
+                    v-model="category">
+                    <span class="bubble work"></span>
+                    <div>Work</div>
+                </label>
+                <label>
+                    <input 
+                    type="radio"
+                    name="category"
+                      value="personal"
+                    v-model="category">
+                    <span class="bubble personal"></span>
+                    <div>Personal</div>
+                </label>
+                <label>
+                    <input 
+                    type="radio"
+                    name="category"
+                    value="familyfriends"
+                    v-model="category">
+                    <span class="bubble familyfriends"></span>
+                    <div>Family&Friends</div>
+                </label>
+               
+            </div>
+        </div>
         <button @click='addTask' class="button">Add</button>
+        
     </div>
 </template>
 
@@ -24,6 +68,7 @@ const emit = defineEmits(['getTasksHijo'])
 // variables para los valors de los inputs
 const name = ref('');
 const description = ref('');
+const category = ref('');
 
 // constant to save a variable that holds an initial false boolean value for the errorMessage container that is conditionally displayed depending if the input field is empty
 const showErrorMessage = ref(false);
@@ -45,13 +90,15 @@ if(name.value.length === 0 || description.value.length === 0){
 } else {
     // Aquí mandamos los valores a la store para crear la nueva Task. Esta parte de la función tenéis que refactorizarla para que funcione con emit y el addTask del store se llame desde Home.vue.
 
-   await taskStore.addTask(name.value, description.value);
+   await taskStore.addTask(name.value, description.value, category.value);
     name.value = '';
     description.value = '';
+    category.value = '';
 
     emit ('getTasksHijo')
 }
 };
+
 
 </script>
 
