@@ -1,61 +1,61 @@
 <template>
-  <div class="container">
-
-    <div class="header">
-      <div class="header-description">
-        <h3 class="header-title">Register to ToDo App</h3>
-        <p class="header-subtitle">Start organizing your tasks!</p>
+  <div class="container-sign container">
+    <div class="box-order container">
+      <img class="logo-img" src="../assets/img/wedo-white.svg" alt="wedo logo">
+      <div class="container-form">
+        <h3 class="header-title">Register to wedo!</h3>
+          <h4 class="header-subtitle">Start organizing your life!</h4>
+          <form @submit.prevent="signUp" class="form-sign-in">
+        <div class="form container">
+          <div class="form-input">
+            <label class="input-field-label">E-mail</label>
+            <input
+              type="email"
+              class="input-field"
+              placeholder="example@gmail.com"
+              id="email"
+              v-model="email"
+              required
+            />
+          </div>
+          <div class="form-input">
+            <label class="input-field-label">Password</label>
+            <input
+              type="password"
+              class="input-field"
+              placeholder="**********"
+              id="password"
+              v-model="password"
+              required
+            />
+          </div>
+          <div class="form-input">
+            <label class="input-field-label">Confirm password</label>
+            <input
+              type="password"
+              class="input-field"
+              placeholder="**********"
+              id="confirmPassword"
+              v-model="confirmPassword"
+              required
+            />
+          </div>
+          
+        </div>
+        <button class="button-border" type="submit">Sign Up</button>
+      </form>
+      <div v-show="errorMsg">{{errorMsg}}</div>
       </div>
-    </div>
+      <p class="askaccount">
+            Have an account?
+            <PersonalRouter
+              :route="route"
+              :buttonText="buttonText"
+              class="sign-up-link"
+            />
+          </p>
 
-    <form @submit.prevent="signUp" class="form-sign-in">
-      <div class="form">
-        <div class="form-input">
-          <label class="input-field-label">E-mail</label>
-          <input
-            type="email"
-            class="input-field"
-            placeholder="example@gmail.com"
-            id="email"
-            v-model="email"
-            required
-          />
-        </div>
-        <div class="form-input">
-          <label class="input-field-label">Password</label>
-          <input
-            type="password"
-            class="input-field"
-            placeholder="**********"
-            id="password"
-            v-model="password"
-            required
-          />
-        </div>
-        <div class="form-input">
-          <label class="input-field-label">Confirm password</label>
-          <input
-            type="password"
-            class="input-field"
-            placeholder="**********"
-            id="confirmPassword"
-            v-model="confirmPassword"
-            required
-          />
-        </div>
-        <button class="button" type="submit">Sign Up</button>
-        <p>
-          Have an account?
-          <PersonalRouter
-            :route="route"
-            :buttonText="buttonText"
-            class="sign-up-link"
-          />
-        </p>
-      </div>
-    </form>
-
-    <div v-show="errorMsg">{{errorMsg}}</div>
+    </div>   
   </div>
 </template>
 

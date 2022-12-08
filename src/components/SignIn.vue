@@ -1,46 +1,53 @@
-<!-- COMPONENTE BOILERPLATE -->
- 
   <template>
 
-  <div class="container">
-    <h3 class="header-title">Log In to ToDo App</h3>
-    <form @submit.prevent="signIn" class="form-sign-in">
-      <div class="form">
-        <div class="form-input">
-          <label class="input-field-label">E-mail</label>
-          <input
-            type="email"
-            class="input-field"
-            placeholder="example@gmail.com"
-            id="email"
-            v-model="email"
-            required
-          />
-        </div>
-        <div class="form-input">
-          <label class="input-field-label">Password</label>
-          <input
-            type="password"
-            class="input-field"
-            placeholder="**********"
-            id="password"
-            v-model="password"
-            required
-          />
-        </div>
-        <button class="button" type="submit">Sign Up</button>
-        <p>
-          Dont have an account?
-          <PersonalRouter
-            :route="route"
-            :buttonText="buttonText"
-            class="sign-up-link"
-          />
-        </p>
+  <div class="container-sign container">
+    <div class="box-order container">
+      <img class="logo-img" src="../assets/img/wedo-white.svg" alt="wedo logo">
+      <div class="container-form">
+      <h3 class="header-title">Log In</h3>
+      <h4> Sign in and continue... as you know, wedo too.</h4>
+      <form @submit.prevent="signIn" class="form-sign-in">
+        <div class="form container">
+          <div class="form-input">
+            <label class="input-field-label">E-mail</label>
+            <input
+              type="email"
+              class="input-field"
+              placeholder="example@gmail.com"
+              id="email"
+              v-model="email"
+              required
+            />
+          </div>
+          <div class="form-input">
+            <label class="input-field-label">Password</label>
+            <input
+              type="password"
+              class="input-field"
+              placeholder="**********"
+              id="password"
+              v-model="password"
+              required
+            />
+          </div>
+        </div>  
+          <button class="button-border" type="submit">Sign In</button>
+      </form>
+      <div class="errorMsg" v-show="errorMsg">{{errorMsg}}</div>
       </div>
-    </form>
-
-    <div v-show="errorMsg">{{errorMsg}}</div>
+      <div class="image-sign">
+        <!-- <img src="../assets/img/pleasant-looking-afro-american-woman-holds-notepads-papers-studies-at-college-glad-to-finish-studying.jpg" alt=""> -->
+      </div>
+      <p class="askaccount">
+            Dont have an account?
+            <PersonalRouter
+              :route="route"
+              :buttonText="buttonText"
+              class="sign-up-link"
+            />
+          </p>
+   
+  </div>
   </div>
 
 </template>
@@ -84,4 +91,7 @@ const signIn = async () => {
 };
 </script>
 
-<style></style>
+<style>
+
+
+</style>

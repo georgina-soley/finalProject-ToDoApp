@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;800&family=Roboto:wght@100;300;400;500;700&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
 
 
 :root {
     --colorWhite: #ffffff;
-    --colorBlack: #000000;
-    --colorRed: blue;
-    --fontSize-sm: 16px;
+    --colorDarkBlue: #02103d;
+    --colorAccent: #49f2d6;
+    --colorError:#eb5e4e;
+    --fontSize-sm: 14px;
     --fontFamily: 'Poppins', Helvetica, sans-serif;
     --fontTitle: 'Poppins';
     --fontBody: 'Poppins';
@@ -14,15 +20,137 @@
 
 body{
     font-family: var(--fontFamily);
-    
+    font-size: 15px;
+    font-weight: 300;
 }
+
 
 /* SignIn Component */
 
 h1 {
     color: var(--colorRed);
+    font-size: 3rem;
 }
 
+h2 {
+
+}
+
+h3 {
+    color: var(--colorDarkBlue);
+    font-size: 2.3rem;
+    line-height: 2rem;
+}
+
+h4 {
+    color: var(--colorDarkBlue);
+    font-weight: 300;
+    font-size: 1.5;
+    padding: 5px 0 30px 0;
+}
+
+/* // buttons */
+.button-border {
+    border: 2px solid var(--colorAccent);
+    border-radius: 15px;
+    background-color:var(--colorWhite);
+    margin-top: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.button-border:hover {
+    background-color: var(--colorAccent);
+    color: var(--colorWhite);
+    font-weight: 700;
+}
+
+/*  missatge error que surt a sign in i sign up */
+ .errorMsg{
+    /* background-color: var(--colorError) ; */
+    padding: 3px 15px;
+    margin: 5px;
+    color: var(--colorError);
+    font-size: 12px;
+}
+
+.container{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.container-sign{
+    background-color:var(--colorDarkBlue);
+    height: 60vh;
+    
+}
+.box-order{
+    padding-top: 10vh;
+    display: flex;
+}
+.logo-img{
+    width: 40%;
+    margin: 10px 0 40px 0;
+}
+.image-sign{
+    display: none;
+}
+.askaccount{
+    padding-top: 3vh;
+    font-size: 0.8rem;
+}
+.container-form{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 4px 5px 15px 2px rgba(99, 100, 100, 0.2);
+    padding: 15px 15px 10px;
+    height: 60vh;
+    width: 80vw; 
+    max-width: 500px;
+    /* height: 100vw; */
+}
+
+.header-title{
+    text-align: left;
+
+}
+.form-sign-in{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 0px 1vh ;
+    width: 75vw;
+    max-width: 460px;
+    
+}
+
+.input-field{
+  border:0;
+  border-bottom:1px solid var(--colorDarkBlue);
+  font-size: 12px;
+  padding:0 0 3px 10px;
+    
+}
+
+.sign-up-link{
+    text-decoration: none;
+    color: var(--colorAccent);
+}
+
+.sign-up-link:hover{
+    color: var(--colorDarkBlue);
+    font-weight: 700;
+}
 /* SignUp Component */
 
 
@@ -30,3 +158,20 @@ h1 {
 /* Home view */
 
 /* Account View */
+
+
+/* // MEDIA QUERI/ RESPONSIVE */
+
+@media (min-width:768px){
+
+
+.image-sign{
+    display: block;
+    background-image: url(../assets/img/pleasant-looking-afro-american-woman-holds-notepads-papers-studies-at-college-glad-to-finish-studying.jpg) ;
+    
+}
+
+/* .container-form{
+    height: 80vh;
+} */
+}
