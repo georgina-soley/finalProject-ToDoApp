@@ -1,14 +1,16 @@
 <template>
   <div class="wrapper">
     <Nav />
-
-    <div class="content"> 
+<!-- El your account está escondido para recolocarlo en algun otro lugar -->
+    <!-- <div class="content your-account"> 
       <h3>Your account:</h3>
       <router-link to="/account">Account</router-link>
-    </div>
+    </div> -->
     <NewTask @getTasksHijo ="getTasks"/>
-    <h1>Tasks:</h1>
+    <h2>Here are your tasks:</h2>
+    <div class="tasks-container">
     <TaskItem v-for="task in tasks" :key="task.id" :task="task"  @deleteTasksHijo ="getTasks" @getTasksHijo="getTasks"/>
+  </div>
   </div>
 </template>
 
@@ -19,6 +21,7 @@ import { useRouter } from 'vue-router';
 import Nav from '../components/Nav.vue';
 import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
+import Subtask from '../components/Subtask.vue';
 
 const taskStore = useTaskStore();
 

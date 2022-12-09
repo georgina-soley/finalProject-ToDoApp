@@ -1,8 +1,8 @@
 <template>
   
-  <nav>
+  <!-- <nav> -->
     <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
-    <router-link to="/">
+    <!-- <router-link to="/">
       Home
     </router-link>
 
@@ -26,7 +26,10 @@
         </li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
+  <div class="menu-box">
+
+  </div>
 </template>
 
 <script setup>
@@ -76,7 +79,7 @@ const signOut = async () => {
 }
 
 nav {
-  background-color: lightgray;
+  background-color:var( --colorDarkBlue);
   display: flex;
   width: 100%;
   justify-content: space-around;

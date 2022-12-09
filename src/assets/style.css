@@ -5,7 +5,9 @@
     padding: 0;
 }
 
-
+button {
+    cursor: pointer;
+}
 
 :root {
     --colorWhite: #ffffff;
@@ -24,12 +26,25 @@ body{
     font-weight: 300;
 }
 
+/*navegador*/
+.menu-box{
+    background-color: var(--colorDarkBlue);
+    color: var(--colorWhite);
+    padding: 30px 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 /* SignIn Component */
 
 h1 {
-    color: var(--colorRed);
-    font-size: 3rem;
+    color: var(--colorDarkBlue);
+    font-size: 2.4rem;
+    line-height: 2.3rem;
+    text-align: center;
+    
 }
 
 h2 {
@@ -46,7 +61,7 @@ h4 {
     color: var(--colorDarkBlue);
     font-weight: 300;
     font-size: 1.5;
-    padding: 5px 0 30px 0;
+    margin:10px
 }
 
 /* // buttons */
@@ -114,6 +129,9 @@ h4 {
     max-width: 500px;
     /* height: 100vw; */
 }
+.container-form h4{
+    padding: 5px 0 30px 0;
+}
 
 .header-title{
     text-align: left;
@@ -142,6 +160,19 @@ h4 {
     
 }
 
+.category-options{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.category-options label{
+    margin: 0 10px 5px 5px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
 .sign-up-link{
     text-decoration: none;
     color: var(--colorAccent);
@@ -156,6 +187,97 @@ h4 {
 
 
 /* Home view */
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tasks-container{
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/*Add New task */
+.newTask-container{
+    width: 80vw;
+    background-color: var(--colorWhite);
+    padding: 50px 10px 30px;
+    border-radius: 15px;
+    box-shadow: 4px 5px 15px 2px rgba(99, 100, 100, 0.2);
+    margin: 25px 0 40px 0;
+}
+
+.form-add{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.category{
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*task item*/
+
+.taskItem-box{
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0px;
+    width: 80vw;
+    max-width: 240px;
+    background-color: var(--colorWhite);
+    padding: 50px 10px 30px;
+    border-radius: 15px;
+    box-shadow: 4px 5px 15px 2px rgba(99, 100, 100, 0.2);
+}
+
+.taskItem-box-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 120px;
+}
+
+/* .taskItem-box-info{
+    max-width: 100px;
+} */
+
+.taskItem-box-buttons{
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+.positive-btns{
+    display: flex;
+    flex-direction: column;
+    height: 115px;
+    justify-content: space-between;
+}
+
+/*buttons*/
+.delete-btn{
+    background-image: url();
+}
+
+.btn{
+    width: 35px;
+    height: 35px;
+}
 
 /* Account View */
 
@@ -169,6 +291,13 @@ h4 {
     display: block;
     background-image: url(../assets/img/pleasant-looking-afro-american-woman-holds-notepads-papers-studies-at-college-glad-to-finish-studying.jpg) ;
     
+}
+
+.tasks-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  grid-template-rows: masonry;
 }
 
 /* .container-form{

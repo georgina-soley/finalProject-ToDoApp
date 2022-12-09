@@ -43,3 +43,9 @@ Empezamos el proyecto, día de mirar el proyecto y empezar a pensar qué se nece
 - HTML y CSS Home + task Item
 - lógica para categorizar las tasks
 - pensar/probar lógica checklist dentro de cada task
+
+### 9 diciembre:
+
+- HTML y CSS Home burger menu + task Item zone Mansory style ( independiente cada item)
+- Seguir lógica checklist dentro de cada task.
+- mirar logica para user zone.

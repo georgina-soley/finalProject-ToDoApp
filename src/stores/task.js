@@ -24,7 +24,7 @@ export const useTaskStore = defineStore("tasks", {
           title: title,
           is_complete: false,
           description: description,
-          category:category,
+          category: category,
         },
       ]);
     },
@@ -49,6 +49,8 @@ export const useTaskStore = defineStore("tasks", {
       console.log(useUserStore().user.id);
       const { data, error } = await supabase.from("tasks").update({category:category}).match({id:id});
     },
+
+
 
   }
 });

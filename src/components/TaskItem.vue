@@ -1,15 +1,30 @@
 <template>
-    <div class="container">
+    <div class="container taskItem-box">
+      <div class="taskItem-box-info">
         <h3 v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.title}}</h3>
+        <h4>{{task.category}}</h4>
         <p v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.description}}</p>
-        <button @click="deleteTask">Delete {{task.title}}</button>
-        <button @click="changeBooleanFunction">edit</button>
-            <div v-show="changeBoolean">
+     </div>  
+     <div class="taskItem-box-buttons">
+        <div class="positive-btns">
+            <button @click="changeStatus" class="complet-btn btn"><font-awesome-icon icon="fa-regular fa-square-check" /></button>
+            <button @click="changeBooleanFunction" class="edit-btn btn">edit</button>
+            <button @click="addsubtaskFunction" class="checklist-btn btn"><font-awesome-icon icon="fa-regular fa-list-check" /></button>
+            
+        </div>  
+        <button @click="deleteTask" class="delete-btn btn" ><font-awesome-icon icon="fa-solid fa-folder-minus" /></button>
+    </div>  
+    <div class="taskItems-optional">
+        <div v-show="changeBoolean">
                 <input type="text" placeholder="Change Title" v-model="name"/>
                 <input type="text" placeholder="Change Description" v-model="description" />
                 <button @click="changeTask">Save changes</button>
-            </div>
-        <button @click="changeStatus">completed</button>
+        </div>
+        <div v-show="addsubtask">
+                <Subtask />
+        </div>
+    </div>
+         
     </div>
 </template>
 
@@ -17,6 +32,8 @@
 import { ref , reactive} from 'vue';
 import { useTaskStore } from '../stores/task';
 import { supabase } from '../supabase';
+import Subtask from './Subtask.vue';
+
 
 const taskStore = useTaskStore();
 const emit = defineEmits([ 'getTasksHijo']);
@@ -39,6 +56,10 @@ const changeTask = async () => {
     emit("getTasksHijo");
 };
 
+ const addsubtask = ref()
+ const addsubtaskFunction = () => {
+     addsubtask.value = !addsubtask.value;
+ };
 const changeBoolean = ref(false);
 
 const changeBooleanFunction = () => {
