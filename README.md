@@ -49,3 +49,10 @@ Empezamos el proyecto, día de mirar el proyecto y empezar a pensar qué se nece
 - HTML y CSS Home burger menu + task Item zone Mansory style ( independiente cada item)
 - Seguir lógica checklist dentro de cada task.
 - mirar logica para user zone.
+
+### 12 diciembre:
+
+- Acabar lógica cheklist
+- Solucionar algunos problemillas que he encontrado
+- Empezar lógica user zone
+- CSS

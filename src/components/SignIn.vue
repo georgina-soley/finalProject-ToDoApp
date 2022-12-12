@@ -5,7 +5,7 @@
       <img class="logo-img" src="../assets/img/wedo-white.svg" alt="wedo logo">
       <div class="container-form">
       <h3 class="header-title">Log In</h3>
-      <h4> Sign in and continue... as you know, wedo too.</h4>
+      <h4> Sign in and continue organizing your life</h4>
       <form @submit.prevent="signIn" class="form-sign-in">
         <div class="form container">
           <div class="form-input">

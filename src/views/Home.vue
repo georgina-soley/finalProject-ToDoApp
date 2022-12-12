@@ -11,6 +11,7 @@
     <div class="tasks-container">
     <TaskItem v-for="task in tasks" :key="task.id" :task="task"  @deleteTasksHijo ="getTasks" @getTasksHijo="getTasks"/>
   </div>
+  <Footer />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import Nav from '../components/Nav.vue';
 import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
 import Subtask from '../components/Subtask.vue';
+import Footer from '../components/Footer.vue'
 
 const taskStore = useTaskStore();
 

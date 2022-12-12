@@ -3,7 +3,7 @@
     <div class="box-order container">
       <img class="logo-img" src="../assets/img/wedo-white.svg" alt="wedo logo">
       <div class="container-form">
-        <h3 class="header-title">Register to wedo!</h3>
+        <h3 class="header-title">Register</h3>
           <h4 class="header-subtitle">Start organizing your life!</h4>
           <form @submit.prevent="signUp" class="form-sign-in">
         <div class="form container">
