@@ -1,8 +1,8 @@
 <template>
   
-  <!-- <nav> -->
-    <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
-    <!-- <router-link to="/">
+  <nav> 
+     <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> 
+     <router-link to="/">
       Home
     </router-link>
 
@@ -26,7 +26,7 @@
         </li>
       </ul>
     </div>
-  </nav> -->
+  </nav>
   <div class="menu-box">
 
   </div>
