@@ -1,8 +1,8 @@
 <template>
-    <div class="container taskItem-box">
+    <div class="container taskItem-box" :class="isComplete ? 'taskItem-box-completed': 'taskItem-box-not-completed' ">
       <div class="taskItem-box-info">
         <h3 v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.title}}</h3>
-        <h4 class= "tagCategory">{{task.category}}</h4>
+        <h4 class="tagCategory" :class= "computedClass">{{task.category}}</h4>
         <p v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.description}}</p>
      </div>  
      <!-- <div class="taskItem-box-buttons"> -->
@@ -20,9 +20,9 @@
                 <input type="text" placeholder="Edit your description" v-model="description" class="option-input"/>
                 <button @click="changeTask">Save changes</button>
         </div>
-        <Subtask :task="props.task"/>
+        
         <div v-show="addsubtask">
-                
+            <Subtask :task="props.task" @getSubtask="emit('getTasksHijo')"/>    
         </div>
     </div>
          
@@ -30,17 +30,26 @@
 </template>
 
 <script setup>
-import { ref , reactive} from 'vue';
+import { ref , reactive, computed} from 'vue';
 import { useTaskStore } from '../stores/task';
 import { supabase } from '../supabase';
 import Subtask from './Subtask.vue';
 const taskStore = useTaskStore();
-const emit = defineEmits([ 'getTasksHijo', 'getSubtask']);
-const name = ref('');
-const description = ref('');
+const emit = defineEmits([ 'getTasksHijo']);
+const name = ref(props.task.title);
+const description = ref(props.task.description);
 const props = defineProps({
     task: Object,
 });
+
+// aquí estamos cammbiando el color según la category que se escoge
+const computedClass = computed(() => {
+    if (props.task.category === "business") return "category-tag-busines"
+    else if (props.task.category === "personal") return "category-tag-personal"
+    else if (props.task.category === "work") return "category-tag-work"
+    else if (props.task.category === "familyfriends") return "category-tag-friends"
+    
+})
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
 const deleteTask = async() => {
     await taskStore.deleteTask(props.task.id);

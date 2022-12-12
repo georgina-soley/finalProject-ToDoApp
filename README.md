@@ -46,7 +46,7 @@ Empezamos el proyecto, día de mirar el proyecto y empezar a pensar qué se nece
 
 ### 9 diciembre:
 
-- HTML y CSS Home burger menu + task Item zone Mansory style ( independiente cada item)
+- HTML y CSS
 - Seguir lógica checklist dentro de cada task.
 - mirar logica para user zone.
 
@@ -54,5 +54,7 @@ Empezamos el proyecto, día de mirar el proyecto y empezar a pensar qué se nece
 
 - Acabar lógica cheklist
 - Solucionar algunos problemillas que he encontrado
-- Empezar lógica user zone
+- Empezar lógica user zone ( empezada... necesidad de probar y investigar)
 - CSS
+
+Se ha complicado la lógica de la cheklist, y aún habiendola hecho aparece otra incógnita... si se hace como array de strings, luego no se le puete cambiar el esteado.. dberia ser un array de objetos para poder hacer cosas con cada uno de los elementos independientemente?

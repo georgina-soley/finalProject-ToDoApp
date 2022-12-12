@@ -55,7 +55,7 @@
                         value="familyfriends"
                         v-model="category">
                         <span class="bubble familyfriends"></span>
-                        <div>Family & Friends</div>
+                        <div>Friends</div>
                     </label>
                 
                 </div>
@@ -83,10 +83,10 @@ const showErrorMessage = ref(false);
 const errorMessage = ref(null);
 // Arrow function para crear tareas.
 const addTask = async() => {
-if(name.value.length === 0 || description.value.length === 0){
+if(name.value.length === 0 || description.value.length === 0 || !category.value){
     // Primero comprobamos que ningún campo del input esté vacío y lanzamos el error con un timeout para informar al user.
     showErrorMessage.value = true;
-    errorMessage.value = 'The task title or description is empty';
+    errorMessage.value = 'Ups!! Something is empty!';
     setTimeout(() => {
     showErrorMessage.value = false;
     }, 5000);

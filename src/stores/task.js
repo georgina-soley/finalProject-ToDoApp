@@ -47,21 +47,22 @@ export const useTaskStore = defineStore("tasks", {
     },
 
     async subtasks(subtask, id) {
-      console.log(useUserStore().user.id);
+      console.log('linia 50',useUserStore().user.id);
       const { data, error } = await supabase.from("tasks").update({subtask:subtask}).match({id:id});
     },
 
     async replaceSubtask(completeSubtask, id) {
+      console.log('el que estem enviant a supabase: ', completeSubtask);
       const { data, error } = await supabase
         .from("tasks").update({subtask:completeSubtask}).match({ id: id })
-      console.log(data);
+      console.log('linia 57',data);
     },
 
     async getSubtask(id) { 
-      console.log(id)
-      const { data, error } = await supabase
+      console.log('linia 61',id)
+      const { data: subtasks, error } = await supabase
         .from("tasks").select("subtask")
-      return data[0];
+      return subtasks[0];
     },
 
     async addSubtask(newSubtask, id) { 

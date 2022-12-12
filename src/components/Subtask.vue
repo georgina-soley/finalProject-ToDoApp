@@ -19,7 +19,7 @@
   
   <script setup>
   import { ref, reactive, onMounted } from "vue";
-import { useTaskStore } from "../stores/task"
+  import { useTaskStore } from "../stores/task"
 
 const emit = defineEmits(['getSubtask'])
 const newSubtask = ref('');
@@ -30,19 +30,20 @@ const props = defineProps({
 
 
 async function startFunction() { 
-  subtasks.value = await useTaskStore().getSubtask(props.task.id);
-  console.log(subtasks.value);
-  console.log(subtasks.value.length);
+  //subtasks.value = await useTaskStore().getSubtask(props.task.id);
+  if(props.task.subtask.length !== 0) subtasks.value = props.task.subtask
+  console.log('linia 36',subtasks.value);
+  console.log('linia 37',subtasks.value.length);
 }
 startFunction();
 
 
 // variable que recoge las subtasks
 const addSubtask = () => {
-  subtasks.push(newSubtask.value);
-  useTaskStore().replaceSubtask(subtasks)
+  subtasks.value.push(newSubtask.value);
+  useTaskStore().replaceSubtask(subtasks.value, props.task.id);
   newSubtask.value = '';
-  //emit('getSubtask');
+  emit('getSubtask');
 };
 
   </script>
