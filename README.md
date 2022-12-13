@@ -58,3 +58,10 @@ Empezamos el proyecto, día de mirar el proyecto y empezar a pensar qué se nece
 - CSS
 
 Se ha complicado la lógica de la cheklist, y aún habiendola hecho aparece otra incógnita... si se hace como array de strings, luego no se le puete cambiar el esteado.. dberia ser un array de objetos para poder hacer cosas con cada uno de los elementos independientemente?
+
+### 13 diciembre:
+
+- HTML y CSS Home burger menu + task Item zone Mansory style ( independiente cada item)
+- User zone css + probar lógica
+- Continuar probando checklist (delete / marcar como hechos)
+- revisar responsive

@@ -84,6 +84,7 @@ nav {
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  height: 80px;
 }
 
 nav ul {

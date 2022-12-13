@@ -40,11 +40,14 @@ startFunction();
 
 // variable que recoge las subtasks
 const addSubtask = () => {
+  if (!newSubtask.value) {
+    return
+  }else{
   subtasks.value.push(newSubtask.value);
   useTaskStore().replaceSubtask(subtasks.value, props.task.id);
   newSubtask.value = '';
   emit('getSubtask');
-};
+}};
 
   </script>
   

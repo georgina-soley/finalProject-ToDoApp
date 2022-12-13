@@ -54,16 +54,16 @@ input:not([type="radio"]):not([type="checkbox"]) {
 }
 
 /*navegador*/
-.menu-box{
+/* .menu-box{
     background-color: var(--colorDarkBlue);
     color: var(--colorWhite);
-    /* padding: 30px 100vw; */
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
     width: 100vw;
-}
+} */
 
 
 /* SignIn Component */
@@ -339,6 +339,7 @@ input:checked ~ .bubble::after {
 
 /*task item*/
 
+
 .taskItem-box{
     position: relative;
     display:flex;
@@ -560,10 +561,13 @@ color: var(--colorWhite);
 }
 
 .tasks-container{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  grid-auto-rows: 200px;
+  gap: 10px; */
+  columns: 4 250px;
 }
+
 
 .taskItem-box-info{
     max-width: 200px;
