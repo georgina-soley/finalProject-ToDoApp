@@ -1,12 +1,37 @@
 <template>
-  
-  <nav> 
-     <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> 
-     <router-link to="/">
-      Home
-    </router-link>
+  <header>
+  <nav class="nav-bar"> 
+    <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> 
+    <router-link to="/"> -->
+       
+    <!-- </router-link> -->
+    <div class="navbar-logo">
+    <img src="../assets/img/wedo-white.svg" alt="logo wedo"/>
+    </div>
+    <div class="burger-menu">
+      <div class="hamburger" @click="actionShowMenu">
+        <span class="line-burger"></span>
+        <span class="line-burger"></span>
+        <span class="line-burger"></span>
+      </div>
+    <div class="navegacion" v-show="showMenu">
+      <ul class="navegacion-links">
+          <li>
+            <router-link to="/">Task Manager</router-link>
+          </li>
 
-    <ul>
+          <li>
+            <router-link to="/account">Your Account</router-link>
+          </li>
+      </ul>
+
+      <div class="logout/welcome">
+        <button @click="signOut" class="log-out-btn button-border">Log out</button>
+      </div>
+   </div>
+  </div>
+  <div class="desktop-menu">
+    <ul class="menu-links">
         <li>
           <router-link to="/">Task Manager</router-link>
         </li>
@@ -16,24 +41,23 @@
         </li>
     </ul>
 
-    <div>
+    <div class="logout/welcome">
       <ul>
-        <li class="log-out-welcome">
-          <p>Welcome, user</p>
+        <li class="welcome">
+          <!-- <p>Welcome,{{name.user}}</p> -->
         </li>
         <li>
-          <button @click="signOut" class="button">Log out</button>
+          <button @click="signOut" class="log-out-btn button-border">Log out</button>
         </li>
       </ul>
     </div>
-  </nav>
-  <div class="menu-box">
-
   </div>
+  </nav>
+</header>
 </template>
 
 <script setup>
-// import PersonalRouter from "./PersonalRouter.vue";
+import PersonalRouter from "./PersonalRouter.vue";
 import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
@@ -71,20 +95,46 @@ const signOut = async () => {
   errorMsg.value = "error";
 };
 
+const showMenu = ref(false)
+const actionShowMenu = () => {
+  showMenu.value = !showMenu.value;
+};
+
 </script>
 
 <style>
-.navbar-img {
-  width: 90px;
+/* header{
+  background-color:var( --colorDarkBlue);
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+} */
+header{
+  width: 100vw;
+  background-color:var( --colorDarkBlue);
+  display: flex;
+  justify-content: center;
 }
 
 nav {
   background-color:var( --colorDarkBlue);
   display: flex;
-  width: 100%;
-  justify-content: space-around;
+  width: 75vw;
+  justify-content: space-between;
   align-items: center;
   height: 80px;
+}
+.navbar-logo {
+  width: 90px;
+}
+
+.burger-menu{
+  display: flex;
+  align-items: center;
+  padding: 3px;
 }
 
 nav ul {
@@ -93,5 +143,9 @@ nav ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.desktop-menu{
+  display: none;
 }
 </style>

@@ -25,7 +25,7 @@ export const useTaskStore = defineStore("tasks", {
           is_complete: false,
           description: description,
           category: category,
-          subtask: [''],
+          subtask: [],
         },
       ]);
     },

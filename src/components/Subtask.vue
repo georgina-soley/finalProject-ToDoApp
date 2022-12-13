@@ -22,7 +22,7 @@
   import { useTaskStore } from "../stores/task"
 
 const emit = defineEmits(['getSubtask'])
-const newSubtask = ref('');
+const newSubtask = ref();
 let subtasks = ref([]);
 const props = defineProps({
     task: Object,

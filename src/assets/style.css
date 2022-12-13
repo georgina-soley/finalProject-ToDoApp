@@ -12,6 +12,7 @@ button {
 :root {
     --colorWhite: #ffffff;
     --colorDarkBlue: #02103d;
+    --colorTransparent: #8f8f8f60;
     --colorAccent: #49f2d6;
     --colorError:#eb5e4e;
     --colorBusiness:#19094d;
@@ -53,7 +54,54 @@ input:not([type="radio"]):not([type="checkbox"]) {
 	display: none;
 }
 
+input[type="text"],input[type="email"],input[type="password"]{
+    font-size: 16px;
+    font-weight:500;
+    padding-left: 30px;
+    margin-top: 10px;
+}
+
+
+
 /*navegador*/
+
+.hamburger{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 25px;
+}
+.line-burger{
+    width: 25px;
+    height: 3px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: var(--colorWhite);
+}
+.navegacion{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: absolute;
+   top: 75px;
+   left: 0;
+   right: 0;
+   width: 100vw;
+   height: 22vh;
+   background-color: var(--colorDarkBlue);
+   transition: 0.3s;
+}
+li a{
+    color: var(--colorWhite);
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 18px;
+}
+.navegacion-links li{
+    margin-top: 15px;
+    
+}
 /* .menu-box{
     background-color: var(--colorDarkBlue);
     color: var(--colorWhite);
@@ -112,12 +160,20 @@ h5 {
     margin-top: 15px;
     padding: 10px 20px;
     cursor: pointer;
+    width: 100px;
+    text-align: center;
 }
 
 .button-border:hover {
     background-color: var(--colorAccent);
     color: var(--colorWhite);
     font-weight: 700;
+}
+.log-out-btn{
+    background-color: var(--colorDarkBlue);
+    color: var(--colorWhite);
+    border-radius: 20px;
+    margin: 20px 0;
 }
 
 /*  missatge error que surt a sign in i sign up */
@@ -197,6 +253,7 @@ h5 {
 }
 
 .input-field{
+    
   border:0;
   border-bottom:1px solid var(--colorDarkBlue);
   font-size: 12px;
@@ -225,16 +282,8 @@ h5 {
     align-items: center;
 }
 
-.tasks-container{
-    width: 80vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap:10px;
-}
 
-/*Add New task */
+/*FICHA Add New task */
 .newTask-container{
     width: 80vw;
     max-width: 600px;
@@ -261,9 +310,9 @@ h5 {
 
 .category-options{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     width: 30vw;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: 10px;
 }
 
@@ -318,7 +367,6 @@ input:checked ~ .bubble::after {
 	transition: 0.2s ease-in-out;
 }
 
-
 .bubble.work::after {
 	background-color: var(--colorWork);
 	box-shadow: var(--work-glow);
@@ -338,7 +386,18 @@ input:checked ~ .bubble::after {
 
 
 /*task item*/
+.tasks-container{
+    /* width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:10px; */
+    
+    columns: 4 250px;
+    width: 80vw;
 
+}
 
 .taskItem-box{
     position: relative;
@@ -346,15 +405,15 @@ input:checked ~ .bubble::after {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 5px 0px;
-    width: 80vw;
-    max-width: 270px;
+    margin: 0px 0px 25px;
+    break-inside: avoid;
+    max-width: 300px;
     min-height: 150px;
     padding: 20px 10px 30px 20px;
     border-radius: 15px;
     box-shadow: 4px 5px 15px 2px rgba(99, 100, 100, 0.2);
 }
-
+/*estilos de las fichas completas o no completas*/
 .taskItem-box-completed{
     background-color: var(--light);
     opacity: 50%;
@@ -363,8 +422,17 @@ input:checked ~ .bubble::after {
 .taskItem-box-not-completed{
     background-color: var(--colorWhite);
 }
+/* Task item status stye type*/
 
+.completed {
+    text-decoration: line-through;
+    color: grey;
+    }
+.not-completed{
+        color: var(--colorDarkBlue);
+    }
 
+/*task item info interna*/
 .taskItem-box-info{
     display: flex;
     flex-direction: column;
@@ -465,20 +533,11 @@ input:checked ~ .bubble::after {
 .not-edit-btn, .edit-btn:hover{
     background-image: url(../assets/img/pen-to-square-solid.svg);
 }
-
+/* 
 .edit-btn:active{
     background-image: url(../assets/img/pen-to-square-solid.svg);
-}
+} */
 
-/* Task item status stye */
-
-.completed {
-    text-decoration: line-through;
-    color: grey;
-    }
-    .not-completed{
-        color: var(--colorDarkBlue);
-    }
 .taskItems-optional{
     padding-top: 20px;
     display: flex;
@@ -548,6 +607,29 @@ color: var(--colorWhite);
 }
 /* Account View */
 
+.user-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0 15px;
+}
+
+.avatar{
+    border-radius:150px ;
+    margin: 30px 0 20px 0;
+}
+.user-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.upload-button{
+    border-radius: 40px;
+    margin-top: 0px;
+    width: auto;
+    padding: 5px 10px;
+
+}
 
 /* // MEDIA QUERI/ RESPONSIVE */
 
@@ -560,17 +642,38 @@ color: var(--colorWhite);
     
 }
 
-.tasks-container{
-  /* display: grid;
+/* .tasks-container{
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
   grid-auto-rows: 200px;
-  gap: 10px; */
+  gap: 10px;
   columns: 4 250px;
+} */
+.burger-menu{
+    display: none;
 }
 
+.desktop-menu{
+    display: flex;
+}
+
+.menu-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu-links li{
+    margin-right: 55px;
+
+}
 
 .taskItem-box-info{
     max-width: 200px;
+}
+
+.user-container{
+    margin-top: 70px;
 }
 
 /* .container-form{

@@ -1,7 +1,7 @@
 <template>
     <footer>
-        <img src="../assets/img/wedo-white.svg" alt="wedo logo" class="logo-footer">
-        <p> Made with love by Georgy Soley</p>
+        <img src="../assets/img/SVG/wedo-color.svg" alt="wedo logo" class="logo-footer">
+        <p> Made with love G.</p>
     </footer>
 </template>
 
@@ -11,13 +11,14 @@
 
 <style>
 footer {
-  background-color:var( --colorDarkBlue);
+  background-color:var( --ligth);
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: space-around;
   align-items: center;
   height: 100px;
-  margin-top: 50px;
+  margin-top: 30px;
+  border-top:0.2px var(--colorTransparent) dotted ;
 }
 .logo-footer{
     width: 20vw;
@@ -25,7 +26,7 @@ footer {
 }
 
 footer > p{
-    color: var(--colorWhite);
+    color: var(--colorDark);
 }
 
 </style>

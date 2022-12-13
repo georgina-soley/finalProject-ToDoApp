@@ -8,11 +8,11 @@
      <!-- <div class="taskItem-box-buttons"> -->
         <div class="positive-btns">
             <button @click="changeStatus" class=" btn" v-bind:class="!isComplete ? 'complet-btn': 'not-complete-btn'"></button>
-            <button @click="changeBooleanFunction" class="edit-btn btn" v-bind:class="changeBoolean ? 'not-edit-btn': 'edit-btn'"></button>
-            <button @click="addsubtaskFunction" class="checklist-btn btn"></button>
+            <button @click="changeBooleanFunction" title="Edit" class="edit-btn btn" v-bind:class="changeBoolean ? 'not-edit-btn': 'edit-btn'"></button>
+            <button @click="addsubtaskFunction" title="Add subtask" class="checklist-btn btn"></button>
             
         </div>  
-        <button @click="deleteTask" class="delete-btn btn" ></button>
+        <button @click="deleteTask" title="Delete" class="delete-btn btn" ></button>
     <!-- </div>   -->
     <div class="taskItems-optional">
         <div v-show="changeBoolean" class="edit-option">

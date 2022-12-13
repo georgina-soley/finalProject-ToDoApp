@@ -1,33 +1,40 @@
 <template>
   <Nav />
-  <div>
-   <h1>Hey: {{username}}</h1>
-   <img :src="avatar_url ? avatar_url : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'" alt="Profile picture">
-   <form class="user-form" @submit.prevent="updateProfile">
-      <div>
-        <label for="username">Name</label>
-        <input type="text" id="username" v-model="username" />
-      </div>
-      <div>
-        <label for="surname">Name</label>
-        <input type="text" id="surname" v-model="surname" />
-      </div>
-      <div>
-        <input type="submit"
-        class="btn"
-        :value="loading ? 'Loading...':'Update'"
-        :disabled ="loading"
-        >
-      </div>
-  </form>
- </div>
+  <div class="wrapper">
+    <div class="newTask-container user-container">
+    <h3>Hey {{username}}!</h3>
+    <!-- <img :src="avatar_url ? avatar_url : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'" alt="Profile picture"> -->
+    
+    <form class="user-form" @submit.prevent="updateProfile">
+      <Avatar v-model:path="avatar_url" @upload="updateProfile" size="10" />
+        <div class="form-input">
+          <label for="username">Name</label>
+          <input type="text" id="username" v-model="username" class="input-field" />
+        </div>
+        <div class="form-input">
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" v-model="surname" class="input-field"/>
+        </div>
+        <div>
+          <input type="submit"
+          class="button-border"
+          :value="loading ? 'Loading...':'Update'"
+          :disabled ="loading"
+          >
+        </div>
+    </form>
+  </div>
+  <Footer />
+</div>
 </template>
 
 <script setup>
 import { supabase } from '../supabase';
 import { onErrorCaptured, onMounted, ref, toRefs } from 'vue';
-  import { useUserStore } from "../stores/user";
-  import Nav from '../components/Nav.vue';
+import { useUserStore } from "../stores/user";
+import Nav from '../components/Nav.vue';
+import Avatar from '../components/Avatar.vue';
+import Footer from '../components/Footer.vue'
 
   const userStore = useUserStore();
 
@@ -45,6 +52,7 @@ const email = ref();
   async function getProfile() {
     await userStore.fetchUser();
     username.value = userStore.profile.username;
+    surname.value = userStore.profile.surname;
     avatar_url.value = userStore.profile.avatar_url;
 };
 
@@ -66,7 +74,8 @@ const email = ref();
     let { data, error } = await supabase.from('profiles').update(
       {
         username: username.value,
-        surname: surname.value  
+        surname: surname.value,  
+        avatar_url: avatar_url.value, 
         }
     ).match({ user_id: useUserStore().user.id })
       if (error) throw onErrorCaptured
