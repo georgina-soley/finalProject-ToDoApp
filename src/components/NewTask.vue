@@ -52,7 +52,7 @@
                         <input 
                         type="radio"
                         name="category"
-                        value="familyfriends"
+                        value="friends"
                         v-model="category">
                         <span class="bubble familyfriends"></span>
                         <div>Friends</div>

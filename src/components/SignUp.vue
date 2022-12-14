@@ -7,6 +7,17 @@
           <h4 class="header-subtitle">Start organizing your life!</h4>
           <form @submit.prevent="signUp" class="form-sign-in">
         <div class="form container">
+          <!-- <div class="form-input">
+            <label class="input-field-label">Nickname</label>
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Type your nickname"
+              id="nickname"
+              v-model="nickname"
+              required
+            />
+          </div> -->
           <div class="form-input">
             <label class="input-field-label">E-mail</label>
             <input
@@ -75,6 +86,8 @@ const buttonText = "Sign In";
 const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
+const username = ref("")
+const nickname = ref("")
 
 // Error Message
 const errorMsg = ref("");
@@ -102,6 +115,23 @@ const signUp = async () => {
   }
   errorMsg.value = "error";
 };
+
+async function updateProfile(){
+  try {
+    loading.value = true
+    let { data, error } = await supabase.from('profiles').update(
+      {
+        username: username.value,
+        nickname: nickname.value
+        }
+    ).match({ user_id: useUserStore().user.id })
+      if (error) throw onErrorCaptured
+  } catch (error) {
+      alert(error.message)
+  } finally {
+      loading.value =false
+    }
+  }
 </script>
 
 <style></style>

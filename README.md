@@ -65,3 +65,9 @@ Se ha complicado la lógica de la cheklist, y aún habiendola hecho aparece otra
 - User zone css + probar lógica
 - Continuar probando checklist (delete / marcar como hechos)
 - revisar responsive
+
+### 13 diciembre:
+
+- lógica interacción subtask (delete/ marcar como hecho)
+- filtro categorias
+- revisar responsive

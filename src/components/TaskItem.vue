@@ -9,9 +9,9 @@
         <div class="positive-btns">
             <button @click="changeStatus" class=" btn" v-bind:class="!isComplete ? 'complet-btn': 'not-complete-btn'"></button>
             <button @click="changeBooleanFunction" title="Edit" class="edit-btn btn" v-bind:class="changeBoolean ? 'not-edit-btn': 'edit-btn'"></button>
-            <button @click="addsubtaskFunction" title="Add subtask" class="checklist-btn btn"></button>
-            
+            <button @click="addsubtaskFunction" title="Add subtask" class="checklist-btn btn"></button>   
         </div>  
+        <!-- <p>{{subtasksList}} / {{subtasksList + subtaskDone}}</p> -->
         <button @click="deleteTask" title="Delete" class="delete-btn btn" ></button>
     <!-- </div>   -->
     <div class="taskItems-optional">
@@ -38,6 +38,8 @@ const taskStore = useTaskStore();
 const emit = defineEmits([ 'getTasksHijo']);
 const name = ref(props.task.title);
 const description = ref(props.task.description);
+// const subtasksList = ref(props.task.subtask.length);
+// const subtaskDone = ref(props.task.subtask_done.length);
 const props = defineProps({
     task: Object,
 });
@@ -78,6 +80,7 @@ const addsubtask = ref()
  const addsubtaskFunction = () => {
      addsubtask.value = !addsubtask.value;
 };
+
 
 </script>
 

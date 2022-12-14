@@ -76,4 +76,16 @@ export const useUserStore = defineStore("user", {
       },
     ],
   },
+
+  
+async getProfile() {
+  await userStore.fetchUser();
+  const username = ref();
+  const surname = ref()
+  const avatar_url = ref(null);
+    username.value = userStore.profile.username;
+    surname.value = userStore.profile.surname;
+    avatar_url.value = userStore.profile.avatar_url;
+    nickname.value = userStore.profile.nickname
+},
 });

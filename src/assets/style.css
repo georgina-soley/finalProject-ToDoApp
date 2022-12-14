@@ -252,15 +252,12 @@ h5 {
     
 }
 
-.input-field{
-    
+.input-field{  
   border:0;
   border-bottom:1px solid var(--colorDarkBlue);
   font-size: 12px;
-  padding:0 0 3px 10px;
-    
+  padding:0 0 3px 10px; 
 }
-
 
 .sign-up-link{
     text-decoration: none;
@@ -407,7 +404,7 @@ input:checked ~ .bubble::after {
     align-items: flex-start;
     margin: 0px 0px 25px;
     break-inside: avoid;
-    max-width: 300px;
+    max-width: 330px;
     min-height: 150px;
     padding: 20px 10px 30px 20px;
     border-radius: 15px;
@@ -543,6 +540,7 @@ input:checked ~ .bubble::after {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 10px;
 }
 .edit-option{
     display: flex;
@@ -605,6 +603,27 @@ color: var(--colorWhite);
     margin: 8px 8px 0 0;
 
 }
+.subtask-item{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
+.dlt-subtask-btn{
+    width: 12px;
+    height: 12px;
+    background-image: url(../assets/img/xmark-solid.svg);
+}
+
+.cheklist-subtask{
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: var(--light);
+    border: var(--colorDarkBlue) 1px solid;
+}
 /* Account View */
 
 .user-container{
@@ -628,8 +647,9 @@ color: var(--colorWhite);
     margin-top: 0px;
     width: auto;
     padding: 5px 10px;
-
 }
+
+
 
 /* // MEDIA QUERI/ RESPONSIVE */
 
