@@ -15,7 +15,7 @@ export const useTaskStore = defineStore("tasks", {
       this.tasks = tasks;
       return this.tasks;
     },
-    
+
     async addTask(title, description, category) {
       console.log(useUserStore().user.id);
       const { data, error } = await supabase.from("tasks").insert([
@@ -26,12 +26,12 @@ export const useTaskStore = defineStore("tasks", {
           description: description,
           category: category,
           subtask: [],
-          subtask_done:[],
+          subtask_done: [],
         },
       ]);
     },
 
-    async deleteTask(id){
+    async deleteTask(id) {
       const { data, error } = await supabase.from("tasks").delete().match({
         id: id,
       });
@@ -39,46 +39,85 @@ export const useTaskStore = defineStore("tasks", {
 
     async changeTask(title, description, id) {
       console.log(useUserStore().user.id);
-      const { data, error } = await supabase.from("tasks").update({title:title, description:description}).match({id:id});
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ title: title, description: description })
+        .match({ id: id });
     },
-    
+
     async changeStatus(is_complete, id) {
       console.log(useUserStore().user.id);
-      const { data, error } = await supabase.from("tasks").update({is_complete:is_complete}).match({id:id});
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ is_complete: is_complete })
+        .match({ id: id });
     },
 
     async subtasks(subtask, id) {
-      console.log('linia 50',useUserStore().user.id);
-      const { data, error } = await supabase.from("tasks").update({subtask:subtask}).match({id:id});
+      console.log("linia 50", useUserStore().user.id);
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ subtask: subtask })
+        .match({ id: id });
     },
 
     async replaceSubtask(listSubtask, id, subtaskdone) {
       // console.log('el que estem enviant a supabase: ', completeSubtask);
       const { data, error } = await supabase
-        .from("tasks").update({subtask:listSubtask, subtask_done:subtaskdone}).match({ id: id })
+        .from("tasks")
+        .update({ subtask: listSubtask, subtask_done: subtaskdone })
+        .match({ id: id });
       // console.log('linia 57',data);
     },
 
-    async getSubtask(id) { 
-      // console.log('linia 61',id)
+    async getSubtask(id) {
       const { data: subtasks, error } = await supabase
-        .from("tasks").select("subtask", "subtask_done")
+        .from("tasks")
+        .select("subtask");
       return subtasks[0];
     },
 
-    async addSubtask(newSubtask, id) { 
+    async addSubtask(newSubtask, id) {
       let completeSubtask = this.getSubtask();
       completeSubtask.push(newSubtask);
       const { data, error } = await supabase
-      .from("tasks").update({subtask:completeSubtask}).match({ id: id })
+        .from("tasks")
+        .update({ subtask: completeSubtask })
+        .match({ id: id });
     },
 
-     async doneSubtask(index, id) {
-       let done = this.getSubtask();
-       done.splice(index);
-       const { data, error } = await supabase
-       .from("tasks").update({subtask_done:done}).match({ id: id })
-    }
+    async getSubtaskDone(id) {
+      const { data: subtask_done, error } = await supabase
+        .from("tasks")
+        .select("subtask_done");
+      return subtask_done[0];
+    },
 
-  }
+    async doneSubtask(index, num, id) {
+      let done = this.getSubtaskDone();
+      done.splice(index, num);
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ subtask_done: done })
+        .match({ id: id });
+    },
+
+    async setupSubtask(id) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .select("subtask_done")
+        .match({ id: id });
+
+      console.log(data[0].subtask_done);
+      return data[0].subtask_done;
+    },
+
+    async getSubtaskDoneForCounter(id) {
+      const { data: subtasks, error } = await supabase
+        .from("tasks")
+        .select("subtask")
+        .match({ id: id });
+      return subtasks[0].subtask;
+    },
+  },
 });

@@ -3,7 +3,7 @@
   <div class="wrapper">
     <div class="newTask-container user-container">
     <h3>Hey {{username}}!</h3>
-    <img :src="avatar_url ? avatar_url : '../assets/img/blank-profile-picture-973460__480.jpg'" alt="Profile picture" class="avatar">
+    <!-- <img :src="avatar_url ? avatar_url : '../assets/img/blank-profile-picture-973460__480.jpg'" alt="Profile picture" class="avatar image"> -->
     
     <form class="user-form" @submit.prevent="updateProfile">
       <Avatar v-model:path="avatar_url" @upload="updateProfile" size="10" />

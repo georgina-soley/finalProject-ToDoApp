@@ -1,24 +1,9 @@
 <template>
   <div class="wrapper">
     <Nav />
-<!-- El your account está escondido para recolocarlo en algun otro lugar -->
-    <!-- <div class="content your-account"> 
-      <h3>Your account:</h3>
-      <router-link to="/account">Account</router-link>
-    </div> -->
     <NewTask @getTasksHijo ="getTasks"/>
     <h2>Here are your tasks:</h2>
-    <!-- <div class="filter-select">
-  <label for="category"></label>
-  <select name="category" id="category">
-    <option value="business work personal friends">All</option>
-    <option value="business">Business</option>
-    <option value="work">Work</option>
-    <option @click="filterCategory" value="personal">Personal</option>
-    <option value="friends">Friends</option>
-  </select>
-  
-</div> -->
+ 
     <div class="tasks-container">
     <TaskItem v-for="task in tasks" :key="task.id" :task="task"  @deleteTasksHijo ="getTasks" @getTasksHijo="getTasks"/>
   </div>
@@ -53,11 +38,11 @@ getTasks();
 
 
 // esto nop
-// const filterCategory = () => {
-//   if (value == personal)
-//     return props.task.category.value == personal
-//    console.log("personal selected");
-// }
+ const filterCategory = () => {
+   if (value == personal)
+     return props.task.category.value == personal
+    console.log("personal selected");
+ }
 
 
 

@@ -6,7 +6,7 @@
        
     <!-- </router-link> -->
     <div class="navbar-logo">
-    <img src="../assets/img/wedo-white.svg" alt="logo wedo"/>
+      <router-link to="/"><img src="../assets/img/wedo-white.svg" alt="logo wedo"/></router-link>
     </div>
     <div class="burger-menu">
       <div class="hamburger" @click="actionShowMenu">

@@ -1,5 +1,5 @@
 <template>
-    <div class="container taskItem-box" :class="isComplete ? 'taskItem-box-completed': 'taskItem-box-not-completed' ">
+    <div class="container taskItem-box" :class="isComplete ? 'taskItem-box-completed': 'taskItem-box-not-completed' " category="props.tasks.category.value">
       <div class="taskItem-box-info">
         <h3 v-bind:class="isComplete ? 'completed': 'not-completed' ">{{task.title}}</h3>
         <h4 class="tagCategory" :class= "computedClass">{{task.category}}</h4>
@@ -38,8 +38,8 @@ const taskStore = useTaskStore();
 const emit = defineEmits([ 'getTasksHijo']);
 const name = ref(props.task.title);
 const description = ref(props.task.description);
-// const subtasksList = ref(props.task.subtask.length);
-// const subtaskDone = ref(props.task.subtask_done.length);
+//  const subtasksList = ref(props.task.subtask.length);
+//  const subtaskDone = ref(props.task.subtask_done.length);
 const props = defineProps({
     task: Object,
 });
@@ -49,7 +49,7 @@ const computedClass = computed(() => {
     if (props.task.category === "business") return "category-tag-busines"
     else if (props.task.category === "personal") return "category-tag-personal"
     else if (props.task.category === "work") return "category-tag-work"
-    else if (props.task.category === "familyfriends") return "category-tag-friends"
+    else if (props.task.category === "friends") return "category-tag-friends"
     
 })
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.

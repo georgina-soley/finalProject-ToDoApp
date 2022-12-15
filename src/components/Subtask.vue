@@ -9,7 +9,6 @@
       <li v-for="(subtask, index) in subtasks" >
         <div class="subtask-item">
           <label class="subtask-list">
-              <!-- <input type="checkbox" @click="done" @change="changeStatusSubtaskFunction"> -->
               <button class="cheklist-subtask" @click="done(index)"></button>
               <span class="not-completed ">{{subtask}}</span>
           </label>
@@ -19,15 +18,14 @@
       <li v-for="(subtask, index) in subtaskDone" >
         <div class="subtask-item">
           <label class="subtask-list">
-              <!-- <input type="checkbox" @click="done" @change="changeStatusSubtaskFunction"> -->
-              <button class="cheklist-subtask" @click="done(index)"></button>
+              <button class="cheklist-subtask" @click="unDone(index)"></button>
               <span class="completed">{{subtask}}</span>
           </label>
           <button @click="removeDone(index)" title="Delete-subtask" class=" dlt-subtask-btn btn" ></button>
         </div>
       </li>
     </ul>
-    
+    {{counter}}
   </div>
   </template>
   
@@ -38,17 +36,34 @@
 const emit = defineEmits(['getSubtask'])
 const newSubtask = ref();
 let subtasks = ref([]);
-let subtaskDone = ref ([])
+let subtaskDone = ref([])
+const taskStore = useTaskStore();
 const props = defineProps({
     task: Object,
 });
+const counter = ref("");
+const numberSubtaskDone = ref(0);
+const numberSubtaskUndone = ref(0);
+const numberAllSubtaskDone = ref(0);
 
+const numberOfSubtask = async () => {
+  //Tareas hechas
+  numberSubtaskDone.value = await taskStore.setupSubtask(props.task.id);
+  //console.log(numberSubtaskDone.value.length);
+  //Tareas sin hacer
+  numberSubtaskUndone.value = await taskStore.getSubtaskDoneForCounter(props.task.id);
+  //console.log(numberSubtaskUndone.value.length);
+
+  numberAllSubtaskDone.value = numberSubtaskDone.value.length + numberSubtaskUndone.value.length;
+  //console.log(numberAllSubtaskDone.value);
+
+  counter.value = numberSubtaskUndone.value.length + "/" + numberAllSubtaskDone.value;
+  console.log(counter.value);
+}
+numberOfSubtask();
 
 async function startFunction() { 
-  //subtasks.value = await useTaskStore().getSubtask(props.task.id);
   if(props.task.subtask.length !== 0) subtasks.value = props.task.subtask
-  // console.log('linia 36',subtasks.value);
-  // console.log('linia 37',subtasks.value.length);
 }
 startFunction();
 
@@ -65,45 +80,45 @@ const addSubtask = () => {
   }
 };
 
-// borrar subtask
-
+// borrar subtask ( con el .splice() arrancamos el elemento del array a otro que no usamos)
 const remove = (index) => {
   subtasks.value.splice(index, 1)
-  
-  //Seleccionamos el elemento a eliminar con el index
-  /*
-  let temp = subtasks.value[subtasks.value.length - 1];
-  subtasks.value[index] = temp;
-  subtasks.value.pop();
-  */
-  /*Ejemplo del código
-  [1,2,3,4,5,6,7,8,9] -> Me quiero cargar, el 7.
-  [1,2,3,4,5,6,9,8,9]
-  [1,2,3,4,5,6,8,9]
-  */
   useTaskStore().replaceSubtask(subtasks.value, props.task.id);
 };
+
+// marcar como completadas las subtasks... pasan a otro array subtask_done ( en este caso el .splice() arrancamos el elemento del array pero esta dentro de [] junto con ...subtaskDone porque los elementos que hay aqui se acumulan en el subtaskDone.value)
+const done = (index) => {
+  subtaskDone.value = [...subtaskDone.value,subtasks.value.splice(index, 1)[0]]
+  useTaskStore().replaceSubtask(subtasks.value, props.task.id, subtaskDone.value)
+  emit('getSubtask');
+  numberOfSubtask();
+};
+
+// borrar las tareas que estan marcadas 
 const removeDone = (index) => {
   subtaskDone.value.splice(index, 1)
   useTaskStore().replaceSubtask(subtaskDone.value, props.task.id)
+  numberOfSubtask();
 }
-
-
-// marcar como completadas las subtasks... pasan a otro array subtask_done
-const changeStatusSubtask = ref(false);
-const done = (index) => {
-
-  subtaskDone.value = [...subtaskDone.value,subtasks.value.splice(index, 1)[0]]
-  console.log(subtasks.value);
-  console.log(subtaskDone.value);
+// volver a marcar como no completada la subtarea... vuelve al array subtasks esta vez al inicio ( por eso ...subtasks.value esta al final)
+const unDone = (index) => {
+  subtasks.value = [subtaskDone.value.splice(index, 1)[0],...subtasks.value]
   useTaskStore().replaceSubtask(subtasks.value, props.task.id, subtaskDone.value)
+  numberOfSubtask();
 };
 
 
-// const changeStatusSubtask = ref(false);
-// const changeStatusSubtaskFunction = () => {
-//   changeStatusSubtask.value = !changeStatusSubtask.value;
-// };
+const doneSubtask = async () => {
+    await taskStore.doneSubtask(subtaskDone.value, props.task.id);
+    emit('getSubtask');
+    numberOfSubtask();
+};
+
+const setupSubTask = async () => {
+  subtaskDone.value = await taskStore.setupSubtask(props.task.id);
+  console.log(props.task.id);
+}
+setupSubTask();
 
   </script>
   

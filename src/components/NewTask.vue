@@ -19,7 +19,6 @@
                         v-model="category">
                         <span class="bubble business"></span>
                         <div>Business</div>
-                    
                     </label>
                     <label>
                         <input 
@@ -30,15 +29,6 @@
                         <span class="bubble work"></span>
                         <div>Work</div>
                     </label>
-                    <!-- <label>
-                        <input 
-                        type="radio"
-                        name="category"
-                        value="studies"
-                        v-model="category">
-                        <span class="bubble studies"></span>
-                        <div>Studies</div>
-                    </label> -->
                     <label>
                         <input 
                         type="radio"
