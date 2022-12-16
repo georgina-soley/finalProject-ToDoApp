@@ -94,13 +94,5 @@ export const useTaskStore = defineStore("tasks", {
         .match({ id: id });
       return data[0].subtask_done;
     },
-
-    async getSubtaskDoneForCounter(id) {
-      const { data: subtasks, error } = await supabase
-        .from("tasks")
-        .select("subtask")
-        .match({ id: id });
-      return subtasks[0].subtask;
-    },
   },
 });

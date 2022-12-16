@@ -45,7 +45,6 @@
       </li>
     </ul>
   </div>
-  <!-- {{ counter }} -->
 </template>
 
 <script setup>
@@ -60,32 +59,6 @@ const taskStore = useTaskStore();
 const props = defineProps({
   task: Object,
 });
-
-// ESTO ES EL CONTADOR DE SUBTAREAS EN EL QUE ESTABA TRABAJANDO HA QUEDADO A MEDIAS
-//  const counter = ref("");
-//  const numberSubtaskDone = ref(0);
-//  const numberSubtaskUndone = ref(0);
-//  const numberAllSubtaskDone = ref(0);
-
-//  const numberOfSubtask = async () => {
-//    //Tareas hechas
-//    numberSubtaskDone.value = await taskStore.setupSubtask(props.task.id);
-//    //console.log(numberSubtaskDone.value.length);
-//    //Tareas sin hacer
-//    numberSubtaskUndone.value = await taskStore.getSubtaskDoneForCounter(
-//      props.task.id
-//    );
-//    //console.log(numberSubtaskUndone.value.length);
-
-//    numberAllSubtaskDone.value =
-//      numberSubtaskDone.value.length + numberSubtaskUndone.value.length;
-//    //console.log(numberAllSubtaskDone.value);
-
-//    counter.value =
-//    numberSubtaskDone.value.length + "/" + numberAllSubtaskDone.value;
-//    console.log(counter.value);
-//  };
-//  numberOfSubtask();
 
 async function startFunction() {
   if (props.task.subtask.length !== 0) subtasks.value = props.task.subtask;
@@ -102,14 +75,12 @@ const addSubtask = () => {
     newSubtask.value = "";
     emit("getSubtask");
   }
-  numberOfSubtask();
 };
 
 // borrar subtask ( con el .splice() arrancamos el elemento del array a otro que no usamos)
 const remove = (index) => {
   subtasks.value.splice(index, 1);
   useTaskStore().replaceSubtask(subtasks.value, props.task.id);
-  numberOfSubtask();
 };
 
 // marcar como completadas las subtasks... pasan a otro array subtask_done ( en este caso el .splice() arrancamos el elemento del array pero esta dentro de [] junto con ...subtaskDone porque los elementos que hay aqui se acumulan en el subtaskDone.value)
@@ -124,14 +95,12 @@ const done = (index) => {
     subtaskDone.value
   );
   emit("getSubtask");
-  numberOfSubtask();
 };
 
 // borrar las tareas que estan marcadas
 const removeDone = (index) => {
   subtaskDone.value.splice(index, 1);
   useTaskStore().replaceSubtask(subtaskDone.value, props.task.id);
-  numberOfSubtask();
 };
 // volver a marcar como no completada la subtarea... vuelve al array subtasks esta vez al inicio ( por eso ...subtasks.value esta al final)
 const unDone = (index) => {
@@ -141,7 +110,6 @@ const unDone = (index) => {
     props.task.id,
     subtaskDone.value
   );
-  numberOfSubtask();
 };
 
 const setupSubTask = async () => {

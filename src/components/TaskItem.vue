@@ -33,7 +33,6 @@
         title="Add subtask"
         class="checklist-btn btn"
       ></button>
-      <!-- <div class="counter">{{ counter }}</div> -->
     </div>
 
     <button @click="deleteTask" title="Delete" class="delete-btn btn"></button>
@@ -112,32 +111,6 @@ const addsubtaskFunction = () => {
   addsubtask.value = !addsubtask.value;
 };
 
-// contador subtasks Esto para el futuro ( no os enfadeis )
-// const counter = ref("");
-// const numberSubtaskDone = ref(0);
-// const numberSubtaskUndone = ref(0);
-// const numberAllSubtaskDone = ref(0);
-
-// const numberOfSubtask = async () => {
-//   //Tareas hechas
-//   numberSubtaskDone.value = await taskStore.setupSubtask(props.task.id);
-//   //console.log(numberSubtaskDone.value.length);
-//   //Tareas sin hacer
-//   numberSubtaskUndone.value = await taskStore.getSubtaskDoneForCounter(
-//     props.task.id
-//   );
-//   //console.log(numberSubtaskUndone.value.length);
-
-//   numberAllSubtaskDone.value =
-//     numberSubtaskDone.value.length + numberSubtaskUndone.value.length;
-//   //console.log(numberAllSubtaskDone.value);
-
-//   counter.value =
-//     numberSubtaskDone.value.length + "/" + numberAllSubtaskDone.value;
-//   console.log(counter.value);
-
-// };
-// numberOfSubtask();
 </script>
 
 <style></style>
