@@ -1,6 +1,6 @@
-# [](https://github.com/zantonz/final-project/blob/master/README.md)ToDo App
+# [](https://github.com/georgina-soley/finalProject-ToDoApp)ToDo App
 
-[Click para acceder a la web](https://todo-zantonz.vercel.app/)
+[Click para acceder a la web](https://todoapp-2iej9m8a4-georgina-soley.vercel.app/auth/login)
 
 Autor: Georgina Soley
 Fecha: 5/12/2022 -16/12/2022
