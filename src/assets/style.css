@@ -15,106 +15,21 @@ button {
     --colorTransparent: #8f8f8f60;
     --colorAccent: #49f2d6;
     --colorError:#eb5e4e;
-    --colorBusiness:#19094d;
-    --colorWork:#0b660b;
-    --colorPersonal:#f5b003;
-    --colorFamFriends:#6a0ea8;
+    --colorBusiness:#1d1dc1;
+    --colorWork:#71C68C;
+    --colorPersonal:#FDC435;
+    --colorFamFriends:#7840D1;
     --light: rgb(248, 248, 248);
     --dark: #171717;
     --fontFamily: 'Poppins', Helvetica, sans-serif;
     --fontTitle: 'Poppins';
     --fontBody: 'Poppins';
 
-    --business-glow: 0px 0px 4px rgba(39, 62, 97, 0.978);
-    --work-glow: 0px 0px 4px rgba(34, 142, 57, 0.75);
-    --personal-glow: 0px 0px 4px rgba(234, 220, 64, 0.75);
-	--famfriends-glow: 0px 0px 4px rgba(175, 64, 234, 0.75);
+    --business-glow: 0px 0px 4px rgba(46, 81, 133, 0.978);
+    --work-glow: 0px 0px 4px rgba(50, 148, 71, 0.75);
+    --personal-glow: 0px 0px 4px rgba(245, 229, 55, 0.817);
+	--famfriends-glow: 0px 0px 4px rgba(157, 52, 213, 0.75);
 }
-
-
-body{
-    background: var(--light);
-	color: var(--dark);
-    font-family: var(--fontFamily);
-    font-size: 15px;
-    font-weight: 300;
-}
-
-li{
-    list-style: none;
-}
-input:not([type="radio"]):not([type="checkbox"]) {
-	appearance: none;
-	outline: none;
-	background: none;
-	cursor: initial;
-}
-
-.category input[type="radio"] {
-	display: none;
-}
-
-input[type="text"],input[type="email"],input[type="password"]{
-    font-size: 16px;
-    font-weight:500;
-    padding-left: 30px;
-    margin-top: 10px;
-}
-
-
-
-/*navegador*/
-
-.hamburger{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    height: 25px;
-}
-.line-burger{
-    width: 25px;
-    height: 3px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    background-color: var(--colorWhite);
-}
-.navegacion{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   position: absolute;
-   top: 75px;
-   left: 0;
-   right: 0;
-   width: 100vw;
-   height: 22vh;
-   background-color: var(--colorDarkBlue);
-   transition: 0.3s;
-}
-li a{
-    color: var(--colorWhite);
-    text-decoration: none;
-    font-size: 16px;
-    line-height: 18px;
-}
-.navegacion-links li{
-    margin-top: 15px;
-    
-}
-/* .menu-box{
-    background-color: var(--colorDarkBlue);
-    color: var(--colorWhite);
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    width: 100vw;
-} */
-
-
-/* SignIn Component */
 
 h1 {
     color: var(--colorDarkBlue);
@@ -147,10 +62,129 @@ h4 {
 
 h5 {
     color: var(--colorDarkBlue);
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     margin-bottom: 5px;
 }
+
+body{
+    background: var(--light);
+	color: var(--dark);
+    font-family: var(--fontFamily);
+    font-size: 15px;
+    font-weight: 300;
+}
+
+li{
+    list-style: none;
+}
+input:not([type="radio"]):not([type="checkbox"]) {
+	appearance: none;
+	outline: none;
+	background: none;
+	cursor: initial;
+}
+
+.category input[type="radio"] {
+	display: none;
+}
+
+input[type="text"],input[type="email"],input[type="password"]{
+    font-size: 16px;
+    font-weight:500;
+    padding-left: 15px;
+    margin-top: 10px;
+    font-family: var(--fontFamily);
+}
+
+
+/*navegador*/
+
+.hamburger{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 25px;
+}
+.line-burger{
+    width: 25px;
+    height: 3px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: var(--colorWhite);
+}
+.navegacion{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   top: 75px;
+   left: 0;
+   right: 0;
+   width: 100vw;
+   height: 25vh;
+   background-color: var(--colorDarkBlue);
+   transition: 0.3s;
+}
+li a{
+    color: var(--colorWhite);
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 18px;
+}
+li a:hover{
+   font-weight: 400;
+}
+
+.navegacion-links li{
+    margin-top: 15px;
+}
+.router-link-active{
+   color: var(--colorAccent);
+}
+
+header{
+    width: 100vw;
+    background-color:var( --colorDarkBlue);
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav {
+    background-color:var( --colorDarkBlue);
+    display: flex;
+    width: 75vw;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+  }
+  .navbar-logo {
+    width: 90px;
+  }
+  
+  .burger-menu{
+    display: flex;
+    align-items: center;
+    padding: 3px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding-inline-start: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .desktop-menu{
+    display: none;
+  }
+
+
+/* SignIn Component */
+
 
 /* // buttons */
 .button-border {
@@ -162,6 +196,7 @@ h5 {
     cursor: pointer;
     width: 100px;
     text-align: center;
+    font-family: var(--fontFamily);
 }
 
 .button-border:hover {
@@ -221,7 +256,7 @@ h5 {
     border-radius: 50px;
     box-shadow: 4px 5px 15px 2px rgba(99, 100, 100, 0.2);
     padding: 15px 15px 10px;
-    height: 65vh; 
+    height: 70vh; 
     max-height: 550px;
     width: 80vw; 
     max-width: 500px;
@@ -249,7 +284,6 @@ h5 {
     padding: 2vh 0px 1vh ;
     width: 75vw;
     max-width: 460px;
-    
 }
 
 .input-field{  
@@ -262,14 +296,16 @@ h5 {
 .sign-up-link{
     text-decoration: none;
     color: var(--colorAccent);
+    font-weight: 700;
+    font-size: 16px;
 }
 
 .sign-up-link:hover{
     color: var(--colorDarkBlue);
     font-weight: 700;
+    text-decoration:underline var(--colorAccent);
 }
 /* SignUp Component */
-
 
 
 /* Home view */
@@ -337,6 +373,11 @@ input:checked ~ .bubble::after {
 	box-shadow: var(--colorBusiness);
 }
 
+.bubble.business {
+	border-color: var(--colorBusiness);
+	box-shadow: var(--business-glow);
+}
+
 .bubble.work {
 	border-color: var(--colorWork);
 	box-shadow: var(--work-glow);
@@ -364,6 +405,11 @@ input:checked ~ .bubble::after {
 	transition: 0.2s ease-in-out;
 }
 
+.bubble.business::after{
+    background-color: var(--colorBusiness);
+    box-shadow: var(--business-glow:);
+}
+
 .bubble.work::after {
 	background-color: var(--colorWork);
 	box-shadow: var(--work-glow);
@@ -384,16 +430,8 @@ input:checked ~ .bubble::after {
 
 /*task item*/
 .tasks-container{
-    /* width: 80vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap:10px; */
-    
     columns: 4 250px;
     width: 80vw;
-
 }
 
 .taskItem-box{
@@ -468,19 +506,7 @@ input:checked ~ .bubble::after {
     font-size: 17px;
     margin-left: 10px;
 }
-/* .taskItem-box-info{
-    max-width: 100px;
-} */
 
-/* .taskItem-box-buttons{
-    height: 170px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-} */
 
 .positive-btns{
     position: absolute;
@@ -530,17 +556,14 @@ input:checked ~ .bubble::after {
 .not-edit-btn, .edit-btn:hover{
     background-image: url(../assets/img/pen-to-square-solid.svg);
 }
-/* 
-.edit-btn:active{
-    background-image: url(../assets/img/pen-to-square-solid.svg);
-} */
 
 .taskItems-optional{
     padding-top: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:stretch;
     margin-bottom: 10px;
+    width: 90%;
 }
 .edit-option{
     display: flex;
@@ -548,13 +571,15 @@ input:checked ~ .bubble::after {
     border: 1px solid var(--colorDarkBlue);
     padding: 15px;
     border-radius: 5px;
+    width: 90%;
 }
 .edit-option button{
     background-color: var(--colorWhite);
-    margin-top: 5px;
+    margin-top: 20px;
     border: 2px solid var(--colorDarkBlue);
-    padding: 3px;
-    border-radius: 5px;
+    padding: 8px 4px;
+    border-radius: 11px;
+    font-family: var(--fontFamily);
 }
 
 .edit-option button:hover{
@@ -568,11 +593,17 @@ color: var(--colorWhite);
     padding: 5px 0;
 }
 
+.counter{
+    font-size: 13px;
+    color: var(--colorDarkBlue);
+}
+
 
 /* Subtasks*/
 
 .subtask-container{
     margin: 15px 0;
+    padding-left: 15px;
 }
 .add-task-cheklist{
     display: flex;
@@ -653,6 +684,30 @@ align-items: center;
     padding: 5px 10px;
 }
 
+.button-submit-acount > input:hover{
+background-color: var(--colorAccent);
+}
+
+
+/*footer*/ 
+footer {
+  background-color:var( --ligth);
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  margin-top: 30px;
+  border-top:0.2px var(--colorTransparent) dotted ;
+}
+.logo-footer{
+    width: 20vw;
+    max-width: 80px;
+}
+
+footer > p{
+    color: var(--colorDark);
+}
 
 
 /* // MEDIA QUERI/ RESPONSIVE */
@@ -663,16 +718,8 @@ align-items: center;
 .image-sign{
     display: block;
     background-image: url(../assets/img/pleasant-looking-afro-american-woman-holds-notepads-papers-studies-at-college-glad-to-finish-studying.jpg) ;
-    
-}
+    }
 
-/* .tasks-container{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-  grid-auto-rows: 200px;
-  gap: 10px;
-  columns: 4 250px;
-} */
 .burger-menu{
     display: none;
 }
@@ -689,18 +736,16 @@ align-items: center;
 
 .menu-links li{
     margin-right: 55px;
-
 }
 
 .taskItem-box-info{
     max-width: 200px;
 }
-
+.subtask-input{
+    width: 250px;
+}
 .user-container{
     margin-top: 70px;
 }
 
-/* .container-form{
-    height: 80vh;
-} */
 }

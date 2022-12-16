@@ -41,7 +41,10 @@ export const useTaskStore = defineStore("tasks", {
       console.log(useUserStore().user.id);
       const { data, error } = await supabase
         .from("tasks")
-        .update({ title: title, description: description })
+        .update({
+          title: title,
+          description: description,
+        })
         .match({ id: id });
     },
 
@@ -62,12 +65,10 @@ export const useTaskStore = defineStore("tasks", {
     },
 
     async replaceSubtask(listSubtask, id, subtaskdone) {
-      // console.log('el que estem enviant a supabase: ', completeSubtask);
       const { data, error } = await supabase
         .from("tasks")
         .update({ subtask: listSubtask, subtask_done: subtaskdone })
         .match({ id: id });
-      // console.log('linia 57',data);
     },
 
     async getSubtask(id) {
@@ -86,29 +87,11 @@ export const useTaskStore = defineStore("tasks", {
         .match({ id: id });
     },
 
-    async getSubtaskDone(id) {
-      const { data: subtask_done, error } = await supabase
-        .from("tasks")
-        .select("subtask_done");
-      return subtask_done[0];
-    },
-
-    async doneSubtask(index, num, id) {
-      let done = this.getSubtaskDone();
-      done.splice(index, num);
-      const { data, error } = await supabase
-        .from("tasks")
-        .update({ subtask_done: done })
-        .match({ id: id });
-    },
-
     async setupSubtask(id) {
       const { data, error } = await supabase
         .from("tasks")
         .select("subtask_done")
         .match({ id: id });
-
-      console.log(data[0].subtask_done);
       return data[0].subtask_done;
     },
 

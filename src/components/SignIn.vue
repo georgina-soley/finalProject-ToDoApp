@@ -1,55 +1,53 @@
-  <template>
-
+<template>
   <div class="container-sign container">
     <div class="box-order container">
-      <img class="logo-img" src="../assets/img/wedo-white.svg" alt="wedo logo">
+      <img
+        class="logo-img"
+        src="../assets/img/wedo-white.svg"
+        alt="wedo logo"
+      />
       <div class="container-form">
-      <h3 class="header-title">Log In</h3>
-      <h4> Sign in and continue organizing your life</h4>
-      <form @submit.prevent="signIn" class="form-sign-in">
-        <div class="form container">
-          <div class="form-input">
-            <label class="input-field-label">E-mail</label>
-            <input
-              type="email"
-              class="input-field"
-              placeholder="example@gmail.com"
-              id="email"
-              v-model="email"
-              required
-            />
+        <h3 class="header-title">Log In</h3>
+        <h4>Sign in and continue organizing your life</h4>
+        <form @submit.prevent="signIn" class="form-sign-in">
+          <div class="form container">
+            <div class="form-input">
+              <label class="input-field-label">E-mail</label>
+              <input
+                type="email"
+                class="input-field"
+                placeholder="example@gmail.com"
+                id="email"
+                v-model="email"
+                required
+              />
+            </div>
+            <div class="form-input">
+              <label class="input-field-label">Password</label>
+              <input
+                type="password"
+                class="input-field"
+                placeholder="**********"
+                id="password"
+                v-model="password"
+                required
+              />
+            </div>
           </div>
-          <div class="form-input">
-            <label class="input-field-label">Password</label>
-            <input
-              type="password"
-              class="input-field"
-              placeholder="**********"
-              id="password"
-              v-model="password"
-              required
-            />
-          </div>
-        </div>  
           <button class="button-border" type="submit">Sign In</button>
-      </form>
-      <div class="errorMsg" v-show="errorMsg">{{errorMsg}}</div>
-      </div>
-      <div class="image-sign">
-        <!-- <img src="../assets/img/pleasant-looking-afro-american-woman-holds-notepads-papers-studies-at-college-glad-to-finish-studying.jpg" alt=""> -->
+        </form>
+        <div class="errorMsg" v-show="errorMsg">{{ errorMsg }}</div>
       </div>
       <p class="askaccount">
-            Dont have an account?
-            <PersonalRouter
-              :route="route"
-              :buttonText="buttonText"
-              class="sign-up-link"
-            />
-          </p>
-   
+        Dont have an account?
+        <PersonalRouter
+          :route="route"
+          :buttonText="buttonText"
+          class="sign-up-link"
+        />
+      </p>
+    </div>
   </div>
-  </div>
-
 </template>
 
 <script setup>
@@ -74,7 +72,6 @@ const errorMsg = ref("");
 // Router to push user once SignedUp to Log In
 const redirect = useRouter();
 
-
 // Arrow function to Signin user to supaBase
 const signIn = async () => {
   try {
@@ -83,15 +80,12 @@ const signIn = async () => {
   } catch (error) {
     errorMsg.value = error.message;
     setTimeout(() => {
-        errorMsg.value = null;
-      }, 5000);
+      errorMsg.value = null;
+    }, 5000);
   }
   return;
   errorMsg.value = "error";
 };
 </script>
 
-<style>
-
-
-</style>
+<style></style>

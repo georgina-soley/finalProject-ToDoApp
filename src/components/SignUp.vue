@@ -1,72 +1,63 @@
 <template>
   <div class="container-sign container">
     <div class="box-order container">
-      <img class="logo-img" src="../assets/img/wedo-white.svg" alt="wedo logo">
+      <img
+        class="logo-img"
+        src="../assets/img/wedo-white.svg"
+        alt="wedo logo"
+      />
       <div class="container-form">
         <h3 class="header-title">Register</h3>
-          <h4 class="header-subtitle">Start organizing your life!</h4>
-          <form @submit.prevent="signUp" class="form-sign-in">
-        <div class="form container">
-          <!-- <div class="form-input">
-            <label class="input-field-label">Nickname</label>
-            <input
-              type="text"
-              class="input-field"
-              placeholder="Type your nickname"
-              id="nickname"
-              v-model="nickname"
-              required
-            />
-          </div> -->
-          <div class="form-input">
-            <label class="input-field-label">E-mail</label>
-            <input
-              type="email"
-              class="input-field"
-              placeholder="example@gmail.com"
-              id="email"
-              v-model="email"
-              required
-            />
+        <h4 class="header-subtitle">Start organizing your life!</h4>
+        <form @submit.prevent="signUp" class="form-sign-in">
+          <div class="form container">
+            <div class="form-input">
+              <label class="input-field-label">E-mail</label>
+              <input
+                type="email"
+                class="input-field"
+                placeholder="example@gmail.com"
+                id="email"
+                v-model="email"
+                required
+              />
+            </div>
+            <div class="form-input">
+              <label class="input-field-label">Password</label>
+              <input
+                type="password"
+                class="input-field"
+                placeholder="**********"
+                id="password"
+                v-model="password"
+                required
+              />
+            </div>
+            <div class="form-input">
+              <label class="input-field-label">Confirm password</label>
+              <input
+                type="password"
+                class="input-field"
+                placeholder="**********"
+                id="confirmPassword"
+                v-model="confirmPassword"
+                required
+              />
+            </div>
           </div>
-          <div class="form-input">
-            <label class="input-field-label">Password</label>
-            <input
-              type="password"
-              class="input-field"
-              placeholder="**********"
-              id="password"
-              v-model="password"
-              required
-            />
-          </div>
-          <div class="form-input">
-            <label class="input-field-label">Confirm password</label>
-            <input
-              type="password"
-              class="input-field"
-              placeholder="**********"
-              id="confirmPassword"
-              v-model="confirmPassword"
-              required
-            />
-          </div>
-          
-        </div>
-        <button class="button-border" type="submit">Sign Up</button>
-      </form>
-      <div v-show="errorMsg">{{errorMsg}}</div>
+          <button class="button-border" type="submit">Sign Up</button>
+        </form>
+        <div v-show="errorMsg">{{ errorMsg }}</div>
       </div>
       <p class="askaccount">
-            Have an account?
-            <PersonalRouter
-              :route="route"
-              :buttonText="buttonText"
-              class="sign-up-link"
-            />
-          </p>
-
-    </div>   
+        Have an account?
+        <PersonalRouter
+          :route="route"
+          :buttonText="buttonText"
+          class="sign-up-link"
+        />
+      </p>
+    </div>
   </div>
 </template>
 
@@ -86,8 +77,8 @@ const buttonText = "Sign In";
 const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
-const username = ref("")
-const nickname = ref("")
+const username = ref("");
+const nickname = ref("");
 
 // Error Message
 const errorMsg = ref("");
@@ -116,22 +107,23 @@ const signUp = async () => {
   errorMsg.value = "error";
 };
 
-async function updateProfile(){
+async function updateProfile() {
   try {
-    loading.value = true
-    let { data, error } = await supabase.from('profiles').update(
-      {
+    loading.value = true;
+    let { data, error } = await supabase
+      .from("profiles")
+      .update({
         username: username.value,
-        nickname: nickname.value
-        }
-    ).match({ user_id: useUserStore().user.id })
-      if (error) throw onErrorCaptured
+        nickname: nickname.value,
+      })
+      .match({ user_id: useUserStore().user.id });
+    if (error) throw onErrorCaptured;
   } catch (error) {
-      alert(error.message)
+    alert(error.message);
   } finally {
-      loading.value =false
-    }
+    loading.value = false;
   }
+}
 </script>
 
 <style></style>

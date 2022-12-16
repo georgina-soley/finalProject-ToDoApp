@@ -71,3 +71,18 @@ Se ha complicado la lógica de la cheklist, y aún habiendola hecho aparece otra
 - lógica interacción subtask (delete/ marcar como hecho)
 - filtro categorias
 - revisar responsive
+
+### 14 diciembre:
+
+- subtask interacción subtask (delete/ marcar como hecho)
+- css
+
+### 15 diciembre:
+
+- detalles css
+- contador
+
+### 16 diciembre:
+
+- material soporte
+- presentación
